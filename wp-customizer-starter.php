@@ -2,11 +2,11 @@
 /**
  * Plugin Name: WP Customizer Starter
  *
- * @link http://codex.wordpress.org/Theme_Customization_API
+ * @link  http://codex.wordpress.org/Theme_Customization_API
  * @since MyTheme 1.0
  */
 
 defined('ABSPATH') || die('File cannot be accessed directly');
 
-include('inc/class-wp-customizer-starter.php');
-include('inc/class-customizing-advanced-sections.php');
+// require 'inc/class-wp-customizer-starter.php';
+require 'inc/class-customizing-advanced-sections.php';
