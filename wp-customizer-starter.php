@@ -6,6 +6,7 @@
  * @since MyTheme 1.0
  */
 
-defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
+defined('ABSPATH') || die('File cannot be accessed directly');
 
-include( 'inc/class-wp-customizer-starter.php' );
+include('inc/class-wp-customizer-starter.php');
+include('inc/class-customizing-advanced-sections.php');
