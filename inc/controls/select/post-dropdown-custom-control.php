@@ -34,7 +34,7 @@ class Post_Dropdown_Custom_Control extends WP_Customize_Control
         if (! empty($this->posts) ) {
             ?>
        <label>
-        <span class="customize-post-dropdown"><?php echo esc_html($this->label); ?></span>
+        <span class="customize-post-dropdown customize-control-title"><?php echo esc_html($this->label); ?></span>
         <select name="<?php echo esc_html($this->id); ?>" id="<?php echo esc_html($this->id); ?>">
         <?php
         foreach ( $this->posts as $post ) {

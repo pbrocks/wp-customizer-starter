@@ -7,9 +7,23 @@ new Customizing_with_the_Customizer();
 class Customizing_with_the_Customizer {
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'wp_customizer_manager' ) );
-        // add_action('customize_register', array( $this, 'include_advanced_section' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		// add_action( 'customize_preview_init', array( $this, 'plustomizer_live_preview' ) );
+
 	}
 
+	public function enqueue_scripts() {
+		wp_enqueue_style( 'plustomizer', plugins_url( '/css/plustomizer.css', __FILE__ ) );
+	}
+
+	/**
+	 * Used by hook: 'customize_preview_init'
+	 * 
+	 * @see add_action('customize_preview_init',$func)
+	 */
+	function plustomizer_live_preview() {
+		wp_enqueue_script( 'plustomizer-preview', plugins_url( '/js/plustomizer-preview.js', __FILE__ ), array( 'jquery','customize-preview' ), '', true );
+	}
 
 	/**
 	 * [wp_customizer_manager description]
@@ -18,7 +32,6 @@ class Customizing_with_the_Customizer {
 	 * @return [type]             [description]
 	 */
 	public function wp_customizer_manager( $wp_manager ) {
-		// $this->simple_section( $wp_manager );
 		$this->panel_creation( $wp_manager );
 	}
 
@@ -31,110 +44,10 @@ class Customizing_with_the_Customizer {
 	 */
 	private function panel_creation( $wp_manager ) {
 		$wp_manager->add_panel( 'plustomizer_panel', array(
-			'title'       => 'Plustomizer',
+			'title'       => 'Plustomizer Panel',
+			'label'       => 'Plustomizer Panel',
 			'description' => 'This is a description of this Plustomizer panel',
 			'priority'    => 10,
 		) );
-
-		$wp_manager->add_section(
-			'simple_customizer_section', array(
-				'title'          => 'Simple Customizer Controls',
-				'priority'       => 35,
-				'panel'          =>  'plustomizer_panel',
-			)
-		);
-
-		/**
-		 * Textbox control
-		 */
-		$wp_manager->add_setting(
-			'textbox_setting', array(
-				'default'        => 'Default Value',
-			)
-		);
-
-		$wp_manager->add_control(
-			'textbox_setting', array(
-				'label'    => 'Text Setting',
-				'section'  => 'simple_customizer_section',
-				'type'     => 'text',
-				'priority' => 1,
-			)
-		);
-
-		/**
-		 * Checkbox control
-		 */
-		$wp_manager->add_setting(
-			'checkbox_setting', array(
-				'default'        => '1',
-			)
-		);
-
-		$wp_manager->add_control(
-			'checkbox_setting', array(
-				'label'   => 'Checkbox Setting',
-				'section' => 'simple_customizer_section',
-				'type'    => 'checkbox',
-				'priority' => 2,
-			)
-		);
-
-		/**
-		 * Radio control
-		 */
-		$wp_manager->add_setting(
-			'radio_setting', array(
-				'default'        => '1',
-			)
-		);
-
-		$wp_manager->add_control(
-			'radio_setting', array(
-				'label'   => 'Radio Setting',
-				'section' => 'simple_customizer_section',
-				'type'    => 'radio',
-				'choices' => array( '1', '2', '3', '4', '5' ),
-				'priority' => 3,
-			)
-		);
-
-		/**
-		 * Select control
-		 */
-		$wp_manager->add_setting(
-			'select_setting', array(
-				'default'        => '1',
-			)
-		);
-
-		$wp_manager->add_control(
-			'select_setting', array(
-				'label'   => 'Select Dropdown Setting',
-				'section' => 'simple_customizer_section',
-				'type'    => 'select',
-				'choices' => array( '1', '2', '3', '4', '5' ),
-				'priority' => 4,
-			)
-		);
-
-		/**
-		 * Dropdown pages control
-		 */
-		$wp_manager->add_setting(
-			'dropdown_pages_setting', array(
-				'default'        => '1',
-			)
-		);
-
-		$wp_manager->add_control(
-			'dropdown_pages_setting', array(
-				'label'   => 'Dropdown Pages Setting',
-				'section' => 'simple_customizer_section',
-				'type'    => 'dropdown-pages',
-				'priority' => 5,
-			)
-		);
 	}
-
 }

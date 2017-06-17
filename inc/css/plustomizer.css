@@ -1,0 +1,14 @@
+#customize-controls .customize-section-description {
+    color: #287af7;
+    font-size: .9rem;
+    line-height: 1.25;
+    border: 1px solid #fa8072;
+    padding: 1rem;
+    text-align: center;
+}
+
+
+#customize-control-radio_setting > label {
+    width: 13%;
+    float: left;
+}

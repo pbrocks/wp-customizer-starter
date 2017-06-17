@@ -19,7 +19,7 @@ class Text_Editor_Custom_Control extends WP_Customize_Control
     {
         ?>
          <label>
-        <span class="customize-text_editor"><?php echo esc_html($this->label); ?></span>
+        <span class="customize-text_editor customize-control-title"><?php echo esc_html($this->label); ?></span>
         <?php
          $settings = array(
          'textarea_name' => $this->id,

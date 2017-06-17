@@ -29,7 +29,7 @@ class Menu_Dropdown_Custom_Control extends WP_Customize_Control
         if (! empty($this->menus) ) {
             ?>
        <label>
-        <span class="customize-menu-dropdown"><?php echo esc_html($this->label); ?></span>
+        <span class="customize-menu-dropdown customize-control-title"><?php echo esc_html($this->label); ?></span>
         <select name="<?php echo esc_html($this->id); ?>" id="<?php echo esc_html($this->id); ?>">
         <?php
         foreach ( $this->menus as $menu ) {

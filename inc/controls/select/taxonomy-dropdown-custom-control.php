@@ -49,7 +49,7 @@ class Taxonomy_Dropdown_Custom_Control extends WP_Customize_Control
 
         ?>
         <label>
-         <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
+         <span class="customize-control-title customize-control-title"><?php echo esc_html($this->label); ?></span>
         <?php wp_dropdown_categories($categories); ?>
         </label>
         <?php

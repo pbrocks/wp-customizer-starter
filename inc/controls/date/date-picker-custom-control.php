@@ -28,7 +28,7 @@ class Date_Picker_Custom_Control extends WP_Customize_Control
 
         ?>
          <label>
-        <span class="customize-date-picker-control"><?php echo esc_html($this->label); ?></span>
+        <span class="customize-date-picker-control customize-control-title"><?php echo esc_html($this->label); ?></span>
         <input type="date" id="<?php echo esc_html($this->id); ?>" name="<?php echo esc_html($this->id); ?>" value="<?php echo esc_html($this->value()); ?>" class="datepicker" />
          </label>
         <?php

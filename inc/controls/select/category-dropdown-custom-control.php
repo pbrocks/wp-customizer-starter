@@ -31,7 +31,7 @@ class Category_Dropdown_Custom_Control extends WP_Customize_Control
         if (! empty($this->categories) ) {
             ?>
             <label>
-        <span class="customize-category-select-control"><?php echo esc_html($this->label); ?></span>
+        <span class="customize-category-select-control customize-control-title"><?php echo esc_html($this->label); ?></span>
         <select <?php $this->link(); ?>>
         <?php
         foreach ( $this->categories as $category ) {

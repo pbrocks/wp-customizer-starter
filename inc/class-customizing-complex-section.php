@@ -1,7 +1,7 @@
 <?php
-new Customizing_Advanced_Sections();
+new Customizing_Complex_Section();
 
-class Customizing_Advanced_Sections {
+class Customizing_Complex_Section {
 	public function __construct() {
 		add_action('customize_register', array( $this, 'wp_customizer_manager' ));
 	}
@@ -31,6 +31,7 @@ class Customizing_Advanced_Sections {
 				'title'          => 'Complex Customizer Controls',
 				'priority'       => 35,
 				'panel'          =>  'plustomizer_panel',
+				'description' => 'This is a description of this text setting in the Complex Customizer Controls section of the Plustomizer panel',
 			)
 		);
 

@@ -30,7 +30,7 @@ class Tags_Dropdown_Custom_Control extends WP_Customize_Control
         }
         ?>
          <label>
-       <span class="customize-tags-dropdown"><?php echo esc_html($this->label); ?></span>
+       <span class="customize-tags-dropdown customize-control-title"><?php echo esc_html($this->label); ?></span>
        <select name="<?php echo esc_html($this->id); ?>" id="<?php echo esc_html($this->id); ?>">
         <?php
         foreach ( $this->tags as $tag ) {

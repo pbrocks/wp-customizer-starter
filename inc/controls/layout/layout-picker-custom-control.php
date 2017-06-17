@@ -30,7 +30,7 @@ class Layout_Picker_Custom_Control extends WP_Customize_Control
         // }
         ?>
          <label>
-        <span class="customize-layout-control"><?php echo esc_html($this->label); ?></span>
+        <span class="customize-layout-control customize-control-title"><?php echo esc_html($this->label); ?></span>
         <ul>
        <li><img src="<?php echo esc_url($final_image_directory); ?>1col.png" alt="Full Width" /><input type="radio" name="<?php echo esc_html($this->id); ?>" id="<?php echo esc_html($this->id); ?>[full_width]" value="1" /></li>
        <li><img src="<?php echo esc_url($final_image_directory); ?>2cl.png" alt="Left Sidebar" /><input type="radio" name="<?php echo esc_html($this->id); ?>" id="<?php echo esc_html($this->id); ?>[left_sidebar]" value="1" /></li>

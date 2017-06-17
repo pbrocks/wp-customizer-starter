@@ -33,7 +33,7 @@ class User_Dropdown_Custom_Control extends WP_Customize_Control {
 
 		?>
 		<label>
-			<span class="customize-control-title" ><?php echo esc_html( $this->label ); ?></span>
+			<span class="customize-control-title customize-control-title" ><?php echo esc_html( $this->label ); ?></span>
 			<select <?php $this->link(); ?>>
 			<?php foreach ( $this->users as $user ) {
 				printf('<option value="%s" %s>%s</option>',

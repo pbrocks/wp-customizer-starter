@@ -1,7 +1,7 @@
 <?php
-new Customizing_Advanced_Sections();
+new Customizing_Advanced_Section();
 
-class Customizing_Advanced_Sections {
+class Customizing_Advanced_Section {
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'wp_customizer_manager' ) );
 	}
@@ -26,11 +26,18 @@ class Customizing_Advanced_Sections {
 	 * @return [type]             [description]
 	 */
 	private function advanced_sections( $wp_manager ) {
+		// $wp_manager->add_panel( 'plustomizer_panel', array(
+		// 	'title'       => 'Plustomizer',
+		// 	'description' => 'This is a description of this Plustomizer panel',
+		// 	'priority'    => 10,
+		// ) );
+
 		$wp_manager->add_section(
 			'advanced_controls_section', array(
 				'title'          => 'Advanced Customizer Controls',
 				'priority'       => 36,
 				'panel'          => 'plustomizer_panel',
+				'description' => 'This is a description of this text setting in the Advanced Customizer Controls section of the Plustomizer panel',
 			)
 		);
 
@@ -46,6 +53,7 @@ class Customizing_Advanced_Sections {
 		$wp_manager->add_control(
 			new Date_Picker_Custom_Control(
 				$wp_manager, 'date_picker_setting', array(
+					'title'   => 'Date Picker Setting',
 					'label'   => 'Date Picker Setting',
 					'section' => 'advanced_controls_section',
 					'settings'   => 'date_picker_setting',

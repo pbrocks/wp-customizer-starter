@@ -36,7 +36,7 @@ class Post_Type_Dropdown_Custom_Control extends WP_Customize_Control
 
         ?>
          <label>
-       <span class="customize-post-type-dropdown"><?php echo esc_html($this->label); ?></span>
+       <span class="customize-post-type-dropdown customize-control-title"><?php echo esc_html($this->label); ?></span>
        <select name="<?php echo esc_html($this->id); ?>" id="<?php echo esc_html($this->id); ?>">
         <?php
         foreach ( $this->post_types as $k => $post_type ) {
