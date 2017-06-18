@@ -3,12 +3,19 @@
     font-size: .9rem;
     line-height: 1.25;
     border: 1px solid #fa8072;
-    padding: 1rem;
+    padding: .4rem;
     text-align: center;
 }
 
+.customize-control select {
+    width: 90%;
+	margin-left: 1rem;
+}
 
 #customize-control-radio_setting > label {
     width: 13%;
     float: left;
+}
+#customize-control-radio_setting > label:nth-child(4) {
+	margin-left: 4rem;
 }
