@@ -13,7 +13,9 @@ class Customizing_with_the_Customizer {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'plustomizer', plugins_url( '/css/plustomizer.css', __FILE__ ) );
+		if ( true === $this->return_theme_mod( 'plustomizer_css' ) ) {
+			wp_enqueue_style( 'plustomizer', plugins_url( '/css/plustomizer.css', __FILE__ ) );
+		}
 	}
 
 	/**
