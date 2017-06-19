@@ -6,11 +6,10 @@ class Customizing_Advanced_Section {
 		add_action( 'customize_register', array( $this, 'wp_customizer_manager' ) );
 	}
 
-
 	/**
 	 * [wp_customizer_manager description]
 	 *
-	 * @param  [type] $wp_manager [description]
+	 * @param [type] $wp_manager [description]
 	 * @return [type]             [description]
 	 */
 	public function wp_customizer_manager( $wp_manager ) {
@@ -27,11 +26,10 @@ class Customizing_Advanced_Section {
 	 */
 	private function advanced_sections( $wp_manager ) {
 		// $wp_manager->add_panel( 'plustomizer_panel', array(
-		// 	'title'       => 'Plustomizer',
-		// 	'description' => 'This is a description of this Plustomizer panel',
-		// 	'priority'    => 10,
+		// 'title'       => 'Plustomizer',
+		// 'description' => 'This is a description of this Plustomizer panel',
+		// 'priority'    => 10,
 		// ) );
-
 		$wp_manager->add_section(
 			'advanced_controls_section', array(
 				'title'          => 'Advanced Customizer Controls',
@@ -74,10 +72,10 @@ class Customizing_Advanced_Section {
 		$wp_manager->add_control(
 			new Layout_Picker_Custom_Control(
 				$wp_manager, 'layout_picker_setting', array(
-					'label'   => 'Layout Picker Setting',
-					'section' => 'advanced_controls_section',
+					'label'      => 'Layout Picker Setting',
+					'section'    => 'advanced_controls_section',
 					'settings'   => 'layout_picker_setting',
-					'priority' => 2,
+					'priority'   => 2,
 				)
 			)
 		);
@@ -94,10 +92,10 @@ class Customizing_Advanced_Section {
 		$wp_manager->add_control(
 			new Category_Dropdown_Custom_Control(
 				$wp_manager, 'category_dropdown_setting', array(
-					'label'   => 'Category Dropdown Setting',
-					'section' => 'advanced_controls_section',
+					'label'      => 'Category Dropdown Setting',
+					'section'    => 'advanced_controls_section',
 					'settings'   => 'category_dropdown_setting',
-					'priority' => 3,
+					'priority'   => 3,
 				)
 			)
 		);
@@ -114,10 +112,10 @@ class Customizing_Advanced_Section {
 		$wp_manager->add_control(
 			new Menu_Dropdown_Custom_Control(
 				$wp_manager, 'menu_dropdown_setting', array(
-					'label'   => 'Menu Dropdown Setting',
-					'section' => 'advanced_controls_section',
+					'label'      => 'Menu Dropdown Setting',
+					'section'    => 'advanced_controls_section',
 					'settings'   => 'menu_dropdown_setting',
-					'priority' => 4,
+					'priority'   => 4,
 				)
 			)
 		);
