@@ -2,15 +2,14 @@
 
 defined('ABSPATH') || die('File cannot be accessed directly');
 
-if (! class_exists('WP_Customize_Control') ) {
+if ( ! class_exists('WP_Customize_Control') ) {
     return null;
 }
 
 /**
  * Class to create a slick toggle control
  */
-class Customizer_Toggle_Control extends WP_Customize_Control
-{
+class Customizer_Toggle_Control extends WP_Customize_Control {
     public $type = 'ios';
 
     /**

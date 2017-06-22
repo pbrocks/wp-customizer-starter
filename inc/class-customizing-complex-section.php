@@ -28,7 +28,7 @@ class Customizing_Complex_Section {
 	private function complex_section( $wp_manager ) {
 		$wp_manager->add_section(
 			'complex_customizer_section', array(
-				'title'          => 'Complex Customizer Controls',
+				'title'          => 'Complex Controls',
 				'priority'       => 35,
 				'panel'          =>  'plustomizer_panel',
 				'description' => 'This is a description of this text setting in the Complex Customizer Controls section of the Plustomizer panel',

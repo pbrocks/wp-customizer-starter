@@ -13,18 +13,18 @@ class Customizing_Advanced_Section {
 	 * @return [type]             [description]
 	 */
 	public function wp_customizer_manager( $wp_manager ) {
-		$this->advanced_sections( $wp_manager );
+		$this->advanced_section( $wp_manager );
 	}
 
 	/**
-	 * The advanced_sections function adds a new section
+	 * The advanced_section function adds a new section
 	 * to the Customizer to display the settings and
 	 * controls that we build.
 	 *
 	 * @param  [type] $wp_manager [description]
 	 * @return [type]             [description]
 	 */
-	private function advanced_sections( $wp_manager ) {
+	private function advanced_section( $wp_manager ) {
 		// $wp_manager->add_panel( 'plustomizer_panel', array(
 		// 'title'       => 'Plustomizer',
 		// 'description' => 'This is a description of this Plustomizer panel',
@@ -32,12 +32,34 @@ class Customizing_Advanced_Section {
 		// ) );
 		$wp_manager->add_section(
 			'advanced_controls_section', array(
-				'title'          => 'Advanced Customizer Controls',
-				'priority'       => 36,
+				'title'          => 'Advanced Controls',
+				'priority'       => 16,
 				'panel'          => 'plustomizer_panel',
-				'description' => 'This is a description of this text setting in the Advanced Customizer Controls section of the Plustomizer panel',
+				'description' => 'This is a description of this text setting in the Advanced Customizer Controls section of the Plustomizer panel in <h4>' . __FILE__ . '</h4>',
 			)
 		);
+
+		$wp_manager->add_setting( 'show_slider1', array(
+			'default'        => '1',
+		) );
+
+		// Checkbox control
+		// require_once dirname( __FILE__ ) . '/layout/layout-picker-custom-control.php';
+
+		/**
+		 * Adding a Checkbox Toggle
+		 */
+		require_once dirname( __FILE__ ) . '/controls/checkbox-toggle/toggle-control.php';
+
+		$wp_manager->add_control( new Customizer_Toggle_Control( $wp_manager,
+				'show_slider1', array(
+				'label'   => 'Show Slider',
+				'description'   => 'description = Show Slider advance d_control s_sec tion advan ced_controls_section',
+				'section' => 'advanced_controls_section',
+				'type'    => 'ios',
+				'priority' => 1,
+			)
+		) );
 
 		/**
 		 * Adding Date Picker
@@ -51,11 +73,12 @@ class Customizing_Advanced_Section {
 		$wp_manager->add_control(
 			new Date_Picker_Custom_Control(
 				$wp_manager, 'date_picker_setting', array(
-					'title'   => 'Date Picker Setting',
-					'label'   => 'Date Picker Setting',
+					'title'   => 'Date P1ker Setting',
+					'label'   => 'Date Peliker Setting => ',
+					'description'   => 'Date Peliker Set in Date Peliker Setting',
 					'section' => 'advanced_controls_section',
 					'settings'   => 'date_picker_setting',
-					'priority' => 1,
+					'priority' => 2,
 				)
 			)
 		);

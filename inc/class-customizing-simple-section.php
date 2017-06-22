@@ -30,7 +30,7 @@ class Customizing_Simple_Section {
 	private function simple_section( $wp_manager ) {
 		$wp_manager->add_section(
 			'simple_customizer_section', array(
-				'title'          => 'Simple Customizer Controls',
+				'title'          => 'Simple Controls',
 				'label'          => 'Plustomizer Panel',
 				'description'    => 'Description of the Simple Customizer Controls of the Plustomizer panel',
 				'priority'       => 35,
