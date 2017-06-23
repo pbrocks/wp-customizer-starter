@@ -45,102 +45,93 @@ class Customizing_Comment_Form {
 		 */
 		$customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
 			'alter_comments', array(
-				'label'       => 'Alter Comments',
-				'description' => 'description = Alter Comments advance d_control s_sec tion advan ced_controls_section',
+				'label'       => 'Alter Comment Form Fields',
+				'description' => 'Turn this switch on to change the text fields used in the Comment Form.',
 				'section'     => 'comment_form_section',
 				'type'        => 'ios',
 				'priority'    => 1,
 			)
 		) );
 
-		// $customizer_additions->add_setting( 'alter_comments5', array(
-		// 'default'        => '0',
-		// ) );
-		// $customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
-		// 'alter_comments5', array(
-		// 'label'   => 'Alte5r Comments',
-		// 'description'   => 'description = Alter Comments advance d_control s_sec tion advan ced_controls_section',
-		// 'section' => 'comment_form_section',
-		// 'type'    => 'ios',
-		// 'priority' => 1,
-		// )
-		// ) );
-		if ( true === get_theme_mod( 'alter_comments' ) ) {
-			// $theme_mod = 'get_theme_mod = 1';
-			/**
-			 * Textbox control
-			 */
-			$customizer_additions->add_setting(
-				'leave_reply', array(
-					'default'        => 'Reply Title',
-				)
-			);
+		/**
+		 * Textbox control
+		 */
+		$customizer_additions->add_setting(
+			'leave_reply', array(
+				'default'        => 'Reply Title',
+			)
+		);
 
-			$customizer_additions->add_control(
-				'leave_reply', array(
-					'section'     => 'comment_form_section',
-					'type'        => 'text',
-					'label'       => 'Reply Title',
-					'description' => 'This is a description of this text setting in the Simple Customizer Controls section of the panel',
-					'priority' => 1,
-				)
-			);
-			/**
-			 * Textbox control
-			 */
-			$customizer_additions->add_setting(
-				'comment_form_title', array(
-					'default'        => 'Comment Form Title',
-					'transport'      => 'refresh',
-				)
-			);
+		$customizer_additions->add_control(
+			'leave_reply', array(
+				'section'     => 'comment_form_section',
+				'type'        => 'text',
+				'label'       => 'Reply Title',
+				'description' => 'This is a description of this text setting in the Simple Customizer Controls section of the panel',
+				'priority' => 1,
+			)
+		);
+		/**
+		 * Textbox control
+		 */
+		$customizer_additions->add_setting(
+			'comment_form_title', array(
+				'default'        => 'Comment Form Title',
+				'transport'      => 'refresh',
+			)
+		);
 
-			$customizer_additions->add_control(
-				'comment_form_title', array(
-					'section'     => 'comment_form_section',
-					'type'        => 'text',
-					'label'       => 'Comment Form Title',
-					'description' => 'This is a description of this text setting in the Simple Customizer Controls section of the panel',
-					'priority' => 1,
-				)
-			);
-			/**
-			 * Textbox control
-			 */
-			$customizer_additions->add_setting(
-				'comment_form_title9', array(
-					'default'        => 'Default Value',
-				)
-			);
+		$customizer_additions->add_control(
+			'comment_form_title', array(
+				'section'     => 'comment_form_section',
+				'type'        => 'text',
+				'label'       => 'Comment Form Title',
+				'description' => 'This is a description of this text setting in the Simple Customizer Controls section of the panel',
+				'priority' => 1,
+			)
+		);
+		/**
+		 * Textbox control
+		 */
+		$customizer_additions->add_setting(
+			'label_submit', array(
+				'default'        => 'Add a Comment Text',
+			)
+		);
 
-			$customizer_additions->add_control(
-				'comment_form_title9', array(
-					'section'  => 'comment_form_section',
-					'type'     => 'text',
-					'label'       => 'Text Setting',
-					'description' => 'This is a description of this text setting in the Simple Customizer Controls section of the panel',
-					'priority' => 1,
-				)
-			);
-		}// End if().
-
+		$customizer_additions->add_control(
+			'label_submit', array(
+				'section'  => 'comment_form_section',
+				'type'     => 'text',
+				'label'       => 'Comment Submit Button Text',
+				'description' => 'This is a description of this text setting in the Simple Customizer Controls section of the panel',
+				'priority' => 1,
+			)
+		);
 	}
 
+	/**
+	 * [adjust_comment_form_defaults description]
+	 *
+	 * @param  [type] $defaults [description]
+	 * @return [type]           [description]
+	 */
 	function adjust_comment_form_defaults( $defaults ) {
-		$defaults['title_reply'] = get_theme_mod( 'leave_reply' );
-		$defaults['label_submit'] = __( 'Click to Add' );
-		$defaults['name_submit'] = __( 'Name Submit' );
-		$defaults['comment_field'] = __( '<p class="comment-form-comment"><label for="comment"> * ' . ( get_theme_mod( 'comment_form_title' ) ? get_theme_mod( 'comment_form_title' ) : 'Comment' ) . '</label><textarea id="comment" name="comment" cols="45" rows="7" aria-required="true"></textarea></p>' );
-			  // $fields =  array(
-		// $defaults['author'] = __( '<p class="comment-form-author">' . '<label for="author">' . __( 'Naiime' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-		// '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>' );
-		// $defaults['email'] = __( '<p class="comment-form-email"><label for="email">' . __( 'Emuuail' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-		// '<input id="email" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>' );
-		// $defaults['url'] = __( '<p class="comment-form-url"><label for="url">' . __( 'Website' ) . '</label>' .
-		// '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>' );
-		return $defaults;
+		if ( true === get_theme_mod( 'alter_comments' ) ) {
+			$defaults['title_reply'] = ( get_theme_mod( 'leave_reply' ) ? get_theme_mod( 'leave_reply' ) : 'Add a Comment below' );
+			$defaults['label_submit'] = ( get_theme_mod( 'label_submit' ) ? get_theme_mod( 'label_submit' ) : 'Click to Add' );
+			// $defaults['name_submit'] = __( 'Name Submit' );
+			$defaults['comment_field'] = __( '<p class="comment-form-comment"><label for="comment"> * ' . ( get_theme_mod( 'comment_form_title' ) ? get_theme_mod( 'comment_form_title' ) : 'Input Comment here' ) . '</label><textarea id="comment" name="comment" cols="45" rows="7" aria-required="true"></textarea></p>' );
+
+			return $defaults;
+		}
 	}
 
+	/**
+	 * [shortcode_in_widgets description]
+	 *
+	 * @return [type] [description]
+	 */
 	public function shortcode_in_widgets() {
 		if ( true === get_theme_mod( 'shortcode_in_widgets' ) ) {
 			add_filter( 'widget_text', 'do_shortcode' );
