@@ -29,7 +29,7 @@ class Customizing_Advanced_Section {
 		// 'title'       => 'Plustomizer',
 		// 'description' => 'This is a description of this Plustomizer panel',
 		// 'priority'    => 10,
-		// ) );
+		// ) ); https://developer.wordpress.org/reference/functions/comment_form/
 		$wp_manager->add_section(
 			'advanced_controls_section', array(
 				'title'          => 'Advanced Controls',
@@ -45,14 +45,13 @@ class Customizing_Advanced_Section {
 
 		// Checkbox control
 		// require_once dirname( __FILE__ ) . '/layout/layout-picker-custom-control.php';
-
 		/**
 		 * Adding a Checkbox Toggle
 		 */
 		require_once dirname( __FILE__ ) . '/controls/checkbox-toggle/toggle-control.php';
 
 		$wp_manager->add_control( new Customizer_Toggle_Control( $wp_manager,
-				'show_slider1', array(
+			'show_slider1', array(
 				'label'   => 'Show Slider',
 				'description'   => 'description = Show Slider advance d_control s_sec tion advan ced_controls_section',
 				'section' => 'advanced_controls_section',
@@ -74,7 +73,7 @@ class Customizing_Advanced_Section {
 			new Date_Picker_Custom_Control(
 				$wp_manager, 'date_picker_setting', array(
 					'title'   => 'Date P1ker Setting',
-					'label'   => 'Date Peliker Setting => ',
+					'label'   => 'Date Peliker Setting => ' . $theme_mod,
 					'description'   => 'Date Peliker Set in Date Peliker Setting',
 					'section' => 'advanced_controls_section',
 					'settings'   => 'date_picker_setting',
@@ -297,4 +296,5 @@ class Customizing_Advanced_Section {
 		// 'priority' => 12
 		// ) ) );
 	}
+
 }
