@@ -30,22 +30,22 @@ class Customizing_with_the_Customizer {
 	/**
 	 * [wp_customizer_manager description]
 	 *
-	 * @param  [type] $wp_manager [description]
+	 * @param  [type] $customizer_additions [description]
 	 * @return [type]             [description]
 	 */
-	public function wp_customizer_manager( $wp_manager ) {
-		$this->panel_creation( $wp_manager );
+	public function wp_customizer_manager( $customizer_additions ) {
+		$this->panel_creation( $customizer_additions );
 	}
 
 	/**
 	 * A section to show how you use the default customizer controls in WordPress
 	 *
-	 * @param Obj $wp_manager - WP Manager
+	 * @param Obj $customizer_additions - WP Manager
 	 *
 	 * @return Void
 	 */
-	private function panel_creation( $wp_manager ) {
-		$wp_manager->add_panel(
+	private function panel_creation( $customizer_additions ) {
+		$customizer_additions->add_panel(
 			'plustomizer_panel', array(
 			'title'       => 'Plustomizer Panel',
 			'label'       => 'Plustomizer Panel',
@@ -54,7 +54,7 @@ class Customizing_with_the_Customizer {
 			)
 		);
 
-		$wp_manager->add_section(
+		$customizer_additions->add_section(
 			'plustomizer_section', array(
 			'title'          => 'Plustomizer Section',
 			'label'          => 'Plustomizer Panel',
@@ -67,13 +67,13 @@ class Customizing_with_the_Customizer {
 		/**
 		 * Checkbox control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'plustomizer_css', array(
 				'default'        => '1',
 				)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			'plustomizer_css', array(
 				'label'   => 'Checkbox CSS',
 				'section' => 'plustomizer_section',
@@ -86,13 +86,13 @@ class Customizing_with_the_Customizer {
 		/**
 		 * Textbox control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'text_setting1', array(
 				'default'        => 'Default Value',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			'text_setting1', array(
 				'section'  => 'plustomizer_section',
 				'type'     => 'text',

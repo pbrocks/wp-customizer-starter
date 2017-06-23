@@ -10,11 +10,11 @@ class Customizing_Comment_Form {
 	/**
 	 * [wp_customizer_manager description]
 	 *
-	 * @param  [type] $wp_manager [description]
+	 * @param  [type] $customizer_additions [description]
 	 * @return [type]             [description]
 	 */
-	public function wp_customizer_manager( $wp_manager ) {
-		$this->comment_form( $wp_manager );
+	public function wp_customizer_manager( $customizer_additions ) {
+		$this->comment_form( $customizer_additions );
 	}
 
 	/**
@@ -22,19 +22,19 @@ class Customizing_Comment_Form {
 	 * to the Customizer to display the settings and
 	 * controls that we build.
 	 *
-	 * @param  [type] $wp_manager [description]
+	 * @param  [type] $customizer_additions [description]
 	 * @return [type]             [description]
 	 */
-	private function comment_form( $wp_manager ) {
+	private function comment_form( $customizer_additions ) {
 		require_once dirname( __FILE__ ) . '/controls/checkbox-toggle/toggle-control.php';
-		$wp_manager->add_section(
+		$customizer_additions->add_section(
 			'comment_form_section', array(
 				'title'          => 'Comment Form Controls',
 				'priority'       => 36,
 				)
 		);
 
-		$wp_manager->add_setting( 'alter_comments',
+		$customizer_additions->add_setting( 'alter_comments',
 			array(
 				'default'        => '0',
 				'transport'      => 'postMessage',
@@ -43,7 +43,7 @@ class Customizing_Comment_Form {
 		/**
 		 * Adding a Checkbox Toggle
 		 */
-		$wp_manager->add_control( new Customizer_Toggle_Control( $wp_manager,
+		$customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
 			'alter_comments', array(
 				'label'       => 'Alter Comments',
 				'description' => 'description = Alter Comments advance d_control s_sec tion advan ced_controls_section',
@@ -53,10 +53,10 @@ class Customizing_Comment_Form {
 			)
 		) );
 
-		// $wp_manager->add_setting( 'alter_comments5', array(
+		// $customizer_additions->add_setting( 'alter_comments5', array(
 		// 'default'        => '0',
 		// ) );
-		// $wp_manager->add_control( new Customizer_Toggle_Control( $wp_manager,
+		// $customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
 		// 'alter_comments5', array(
 		// 'label'   => 'Alte5r Comments',
 		// 'description'   => 'description = Alter Comments advance d_control s_sec tion advan ced_controls_section',
@@ -70,13 +70,13 @@ class Customizing_Comment_Form {
 			/**
 			 * Textbox control
 			 */
-			$wp_manager->add_setting(
+			$customizer_additions->add_setting(
 				'leave_reply', array(
 					'default'        => 'Reply Title',
 				)
 			);
 
-			$wp_manager->add_control(
+			$customizer_additions->add_control(
 				'leave_reply', array(
 					'section'     => 'comment_form_section',
 					'type'        => 'text',
@@ -88,14 +88,14 @@ class Customizing_Comment_Form {
 			/**
 			 * Textbox control
 			 */
-			$wp_manager->add_setting(
+			$customizer_additions->add_setting(
 				'comment_form_title', array(
 					'default'        => 'Comment Form Title',
 					'transport'      => 'refresh',
 				)
 			);
 
-			$wp_manager->add_control(
+			$customizer_additions->add_control(
 				'comment_form_title', array(
 					'section'     => 'comment_form_section',
 					'type'        => 'text',
@@ -107,13 +107,13 @@ class Customizing_Comment_Form {
 			/**
 			 * Textbox control
 			 */
-			$wp_manager->add_setting(
+			$customizer_additions->add_setting(
 				'comment_form_title9', array(
 					'default'        => 'Default Value',
 				)
 			);
 
-			$wp_manager->add_control(
+			$customizer_additions->add_control(
 				'comment_form_title9', array(
 					'section'  => 'comment_form_section',
 					'type'     => 'text',

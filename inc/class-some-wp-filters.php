@@ -10,11 +10,11 @@ class Some_WP_Filters {
 	/**
 	 * [wp_customizer_manager description]
 	 *
-	 * @param  [type] $wp_manager [description]
+	 * @param  [type] $customizer_additions [description]
 	 * @return [type]             [description]
 	 */
-	public function wp_customizer_manager( $wp_manager ) {
-		$this->wp_filters( $wp_manager );
+	public function wp_customizer_manager( $customizer_additions ) {
+		$this->wp_filters( $customizer_additions );
 	}
 
 	/**
@@ -22,29 +22,29 @@ class Some_WP_Filters {
 	 * to the Customizer to display the settings and
 	 * controls that we build.
 	 *
-	 * @param  [type] $wp_manager [description]
+	 * @param  [type] $customizer_additions [description]
 	 * @return [type]             [description]
 	 */
-	private function wp_filters( $wp_manager ) {
+	private function wp_filters( $customizer_additions ) {
 		/**
 		 * Include custom Toggle Control
 		 */
 		require_once dirname( __FILE__ ) . '/controls/checkbox-toggle/toggle-control.php';
-		$wp_manager->add_section(
+		$customizer_additions->add_section(
 			'wp_filters_section', array(
 				'title'          => 'Control Filters',
 				'priority'       => 26,
 				)
 		);
 
-		$wp_manager->add_setting( 'some_setting', array(
+		$customizer_additions->add_setting( 'some_setting', array(
 			'default'        => '0',
 		) );
 
 		/**
 		 * Adding a Checkbox Toggle
 		 */
-		$wp_manager->add_control( new Customizer_Toggle_Control( $wp_manager,
+		$customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
 			'some_setting', array(
 				'label'   => 'Filter Comments',
 				'description'   => 'description = Alter Comments advance d_control s_sec tion advan ced_controls_section',
@@ -54,11 +54,11 @@ class Some_WP_Filters {
 			)
 		) );
 
-		$wp_manager->add_setting( 'shortcode_in_widgets', array(
+		$customizer_additions->add_setting( 'shortcode_in_widgets', array(
 			'default'        => '0',
 		) );
 
-		$wp_manager->add_control( new Customizer_Toggle_Control( $wp_manager,
+		$customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
 			'shortcode_in_widgets', array(
 				'label'   => 'Shortcode in Widgets',
 				'description'   => 'Turn this toggle on to use shortcodes in your Widgets.',
@@ -73,13 +73,13 @@ class Some_WP_Filters {
 			/**
 			 * Textbox control
 			 */
-			$wp_manager->add_setting(
+			$customizer_additions->add_setting(
 				'wp_filters_title', array(
 					'default'        => 'Default Value',
 				)
 			);
 
-			$wp_manager->add_control(
+			$customizer_additions->add_control(
 				'wp_filters_title', array(
 					'section'  => 'wp_filters_section',
 					'type'     => 'text',

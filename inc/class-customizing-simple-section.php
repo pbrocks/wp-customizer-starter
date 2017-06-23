@@ -13,22 +13,22 @@ class Customizing_Simple_Section {
 	/**
 	 * [wp_customizer_manager description]
 	 *
-	 * @param  [type] $wp_manager [description]
+	 * @param  [type] $customizer_additions [description]
 	 * @return [type]             [description]
 	 */
-	public function wp_customizer_manager( $wp_manager ) {
-		$this->simple_section( $wp_manager );
+	public function wp_customizer_manager( $customizer_additions ) {
+		$this->simple_section( $customizer_additions );
 	}
 
 	/**
 	 * A section to show how you use the default customizer controls in WordPress
 	 *
-	 * @param Obj $wp_manager - WP Manager
+	 * @param Obj $customizer_additions - WP Manager
 	 *
 	 * @return Void
 	 */
-	private function simple_section( $wp_manager ) {
-		$wp_manager->add_section(
+	private function simple_section( $customizer_additions ) {
+		$customizer_additions->add_section(
 			'simple_customizer_section', array(
 				'title'          => 'Simple Controls',
 				'label'          => 'Plustomizer Panel',
@@ -41,13 +41,13 @@ class Customizing_Simple_Section {
 		/**
 		 * Textbox control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'textbox_setting', array(
 				'default'        => 'Default Value',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			'textbox_setting', array(
 				'section'  => 'simple_customizer_section',
 				'type'     => 'text',
@@ -60,13 +60,13 @@ class Customizing_Simple_Section {
 		/**
 		 * Checkbox control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'checkbox_setting', array(
 				'default'        => '1',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			'checkbox_setting', array(
 				'label'   => 'Checkbox Setting',
 				'title'   => 'Checkbox Setting',
@@ -79,13 +79,13 @@ class Customizing_Simple_Section {
 		/**
 		 * Radio control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'radio_setting', array(
 				'default'        => '1',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			'radio_setting', array(
 				'section'     => 'simple_customizer_section',
 				'type'        => 'radio',
@@ -99,13 +99,13 @@ class Customizing_Simple_Section {
 		/**
 		 * Select control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'select_setting', array(
 				'default'        => '1',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			'select_setting', array(
 				'section' => 'simple_customizer_section',
 				'type'    => 'select',
@@ -119,13 +119,13 @@ class Customizing_Simple_Section {
 		/**
 		 * Dropdown pages control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'dropdown_pages_setting', array(
 				'default'     => '1',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			'dropdown_pages_setting', array(
 				'section'     => 'simple_customizer_section',
 				'type'        => 'dropdown-pages',

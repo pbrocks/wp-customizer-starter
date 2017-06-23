@@ -11,24 +11,24 @@ class CSC_Theme_Customizer {
 	/**
 	 * Customizer manager
 	 *
-	 * @param WP_Customizer_Manager $wp_manager
+	 * @param WP_Customizer_Manager $customizer_additions
 	 * @return void
 	 */
-	public static function customizer_manager( $wp_manager ) {
+	public static function customizer_manager( $customizer_additions ) {
 		$plugin = 'connect-core-wp';
 		// if ( ! is_plugin_active( $plugin . '/' . $plugin . '.php' ) ) {
-			self::domain_mapping_solo( $wp_manager );
-			// self::domain_mapping_connect( $wp_manager );
+			self::domain_mapping_solo( $customizer_additions );
+			// self::domain_mapping_connect( $customizer_additions );
 		// } else {
-		// self::domain_mapping_connect( $wp_manager );
-		// self::domain_mapping_solo( $wp_manager );
+		// self::domain_mapping_connect( $customizer_additions );
+		// self::domain_mapping_solo( $customizer_additions );
 		// }
 	}
 
 	/**
 	 * Customizer manager
 	 *
-	 * @param WP_Customizer_Manager $wp_manager
+	 * @param WP_Customizer_Manager $customizer_additions
 	 * @return void
 	 */
 	public static function check_for_panels() {
@@ -52,28 +52,28 @@ class CSC_Theme_Customizer {
 	/**
 	 * Customizer manager
 	 *
-	 * @param  WP_Customizer_Manager $wp_manager
+	 * @param  WP_Customizer_Manager $customizer_additions
 	 * @return void
 	 */
-	private static function domain_mapping_connect( $wp_manager ) {
+	private static function domain_mapping_connect( $customizer_additions ) {
 
 		$toggle = self::check_for_panels();
 		$panel = $toggle['panel'];
 		$label = $toggle['label'];
 		// $create = $toggle['toggle'];
-		$wp_manager->add_section( 'domain_mapping_section', array(
+		$customizer_additions->add_section( 'domain_mapping_section', array(
 			'title'          => 'Domain Mapping',
 			'priority'       => 13,
 			'panel'          => $toggle['panel'],
 
 		) );
 
-		$wp_manager->add_setting( 'ce_image_https',
+		$customizer_additions->add_setting( 'ce_image_https',
 			array(
 			'default'        => false,
 		) );
 
-		$wp_manager->add_control( new Toggle( $wp_manager, 'ce_image_https', array(
+		$customizer_additions->add_control( new Toggle( $customizer_additions, 'ce_image_https', array(
 				'settings'   => 'ce_image_https',
 				'label'      => __( 'ce Image https URL', 'csc-domain-mapping' ),
 				'section'    => 'content_options_section',
@@ -82,19 +82,19 @@ class CSC_Theme_Customizer {
 		) );
 
 		// add "Content Options" section
-		$wp_manager->add_section( 'content_options_section' , array(
+		$customizer_additions->add_section( 'content_options_section' , array(
 			'title'          => __( 'Content Options', 'csc-domain-mapping' ),
 			'priority'       => 100,
 			'panel'          => $toggle['panel'],
 		) );
 
 		// add setting for page comment toggle checkbox
-		$wp_manager->add_setting( 'page_comment_toggle', array(
+		$customizer_additions->add_setting( 'page_comment_toggle', array(
 			'default' => 1,
 		) );
 
 		// add control for page comment toggle checkbox
-		$wp_manager->add_control( new Toggle( $wp_manager,
+		$customizer_additions->add_control( new Toggle( $customizer_additions,
 			'page_comment_toggle', array(
 				'label'     => __( 'Show comments on pages?', 'csc-domain-mapping' ),
 				'section'   => 'content_options_section',
@@ -103,12 +103,12 @@ class CSC_Theme_Customizer {
 				)
 		) );
 
-		$wp_manager->add_setting( 'wds_force_image_https',
+		$customizer_additions->add_setting( 'wds_force_image_https',
 			array(
 			'default'        => false,
 			)
 		);
-		$wp_manager->add_control( new Toggle( $wp_manager,
+		$customizer_additions->add_control( new Toggle( $customizer_additions,
 			'wds_force_image_https',
 			array(
 				'settings'   => 'wds_force_image_https',
@@ -117,12 +117,12 @@ class CSC_Theme_Customizer {
 				'type'       => 'ios',
 			)
 		) );
-		$wp_manager->add_setting( 'fix_header_image',
+		$customizer_additions->add_setting( 'fix_header_image',
 			array(
 			'default'        => false,
 			)
 		);
-		$wp_manager->add_control( new Toggle( $wp_manager, 'fix_header_image',
+		$customizer_additions->add_control( new Toggle( $customizer_additions, 'fix_header_image',
 			array(
 				'settings'   => 'fix_header_image',
 				'label'      => __( 'Fix Header Image URL', 'csc-domain-mapping' ),
@@ -130,12 +130,12 @@ class CSC_Theme_Customizer {
 				'type'       => 'ios',
 			)
 		) );
-		$wp_manager->add_setting( 'fix_background_image',
+		$customizer_additions->add_setting( 'fix_background_image',
 			array(
 			'default'        => false,
 			)
 		);
-		$wp_manager->add_control( new Toggle( $wp_manager, 'fix_background_image',
+		$customizer_additions->add_control( new Toggle( $customizer_additions, 'fix_background_image',
 			array(
 				'settings'   => 'fix_background_image',
 				'label'      => __( 'Fix Background Image URL', 'csc-domain-mapping' ),
@@ -143,12 +143,12 @@ class CSC_Theme_Customizer {
 				'type'       => 'ios',
 			)
 		) );
-		$wp_manager->add_setting( 'fix_meta_image',
+		$customizer_additions->add_setting( 'fix_meta_image',
 			array(
 			'default'        => false,
 			)
 		);
-		$wp_manager->add_control( new Toggle( $wp_manager,
+		$customizer_additions->add_control( new Toggle( $customizer_additions,
 			'fix_meta_image_url',
 			array(
 			'settings'   => 'fix_meta_image',
@@ -157,13 +157,13 @@ class CSC_Theme_Customizer {
 			'type'       => 'ios',
 			)
 		) );
-		$wp_manager->add_setting( 'fix_upload_url',
+		$customizer_additions->add_setting( 'fix_upload_url',
 			array(
 				'default'        => false,
 			)
 		);
 
-		$wp_manager->add_control( new Toggle( $wp_manager, 'fix_upload_url',
+		$customizer_additions->add_control( new Toggle( $customizer_additions, 'fix_upload_url',
 			array(
 				'settings'   => 'fix_upload_url',
 				'label'      => __( 'Fix Media Upload URL', 'csc-domain-mapping' ),
@@ -172,13 +172,13 @@ class CSC_Theme_Customizer {
 			)
 		) );
 
-		$wp_manager->add_setting( 'fix_nav_item_url',
+		$customizer_additions->add_setting( 'fix_nav_item_url',
 			array(
 			'default'        => false,
 			)
 		);
 
-		$wp_manager->add_control( new Toggle( $wp_manager, 'fix_nav_item_url',
+		$customizer_additions->add_control( new Toggle( $customizer_additions, 'fix_nav_item_url',
 			array(
 				'settings'   => 'fix_nav_item_url',
 				'label'      => __( 'Fix Nav Item URL', 'csc-domain-mapping' ),
@@ -187,7 +187,7 @@ class CSC_Theme_Customizer {
 			)
 		) );
 
-			$wp_manager->add_section( 'section_id', array(
+			$customizer_additions->add_section( 'section_id', array(
 				'priority' => 20,
 				'capability' => 'edit_theme_options',
 				'theme_supports' => '',
@@ -196,13 +196,13 @@ class CSC_Theme_Customizer {
 				'panel' => $toggle['panel'],
 			) );
 
-			$wp_manager->add_setting( 'show_diagnostics',
+			$customizer_additions->add_setting( 'show_diagnostics',
 				array(
 					'default'    => false,
 				)
 			);
 
-			$wp_manager->add_control( new Toggle( $wp_manager, 'show_diagnostics',
+			$customizer_additions->add_control( new Toggle( $customizer_additions, 'show_diagnostics',
 				array(
 					'settings'    => 'show_diagnostics',
 					'label'       => __( 'Domain Mapping Diagnostics' ),
@@ -212,7 +212,7 @@ class CSC_Theme_Customizer {
 				)
 			) );
 		if ( true === get_theme_mod( 'show_diagnostics' ) ) {
-			$wp_manager->add_setting( 'diagnostic_type',
+			$customizer_additions->add_setting( 'diagnostic_type',
 				array(
 				'capability' => 'edit_theme_options',
 				'default'    => 'mapping',
@@ -221,7 +221,7 @@ class CSC_Theme_Customizer {
 				// // 'customizer_sanitize_radio',
 				// ),
 			) );
-			$wp_manager->add_control( 'diagnostic_type',
+			$customizer_additions->add_control( 'diagnostic_type',
 				array(
 					'type'        => 'radio',
 					'section'     => 'section_id',
@@ -240,17 +240,17 @@ class CSC_Theme_Customizer {
 	/**
 	 * Customizer manager
 	 *
-	 * @param  WP_Customizer_Manager $wp_manager
+	 * @param  WP_Customizer_Manager $customizer_additions
 	 * @return void
 	 */
-	private static function domain_mapping_solo( $wp_manager ) {
+	private static function domain_mapping_solo( $customizer_additions ) {
 
 		$toggle = self::check_for_panels();
 		$panel = $toggle['panel'];
 		$label = $toggle['label'];
 		// $create = $toggle['toggle'];
-		// $wp_manager->add_panel( $toggle['panel'], array(
-		$wp_manager->add_panel( 'domain_mapping_panel', array(
+		// $customizer_additions->add_panel( $toggle['panel'], array(
+		$customizer_additions->add_panel( 'domain_mapping_panel', array(
 			'title'          => __( $toggle['label'], 'csc-domain-mapping' ),
 			'priority' => 10,
 			'capability' => 'edit_theme_options',
@@ -259,19 +259,19 @@ class CSC_Theme_Customizer {
 
 		) );
 
-		$wp_manager->add_section( 'domain_mapping_section', array(
+		$customizer_additions->add_section( 'domain_mapping_section', array(
 			'title'          => $toggle['label'],
 			'priority'       => 13,
 			'panel'          => 'domain_mapping_panel',
 			'description'          => $toggle['panel'] . ' description',
 		) );
 
-		$wp_manager->add_setting( 'ce_image_https',
+		$customizer_additions->add_setting( 'ce_image_https',
 			array(
 				'default'        => false,
 		) );
 
-		$wp_manager->add_control( new Toggle( $wp_manager, 'ce_image_https',
+		$customizer_additions->add_control( new Toggle( $customizer_additions, 'ce_image_https',
 			array(
 			'settings'   => 'ce_image_https',
 			'label'      => __( 'ce Image https URL', 'csc-domain-mapping' ),
@@ -280,13 +280,13 @@ class CSC_Theme_Customizer {
 			)
 		) );
 
-		$wp_manager->add_setting( 'fix_nav_item_url',
+		$customizer_additions->add_setting( 'fix_nav_item_url',
 			array(
 			'default'        => false,
 			)
 		);
 
-		$wp_manager->add_control( new Toggle( $wp_manager, 'fix_nav_item_url',
+		$customizer_additions->add_control( new Toggle( $customizer_additions, 'fix_nav_item_url',
 			array(
 				'settings'   => 'fix_nav_item_url',
 				'label'      => __( 'Fix Nav Item URL', 'csc-domain-mapping' ),
@@ -296,20 +296,20 @@ class CSC_Theme_Customizer {
 		) );
 
 		// add "Content Options" section
-		$wp_manager->add_section( 'content_options_section' , array(
+		$customizer_additions->add_section( 'content_options_section' , array(
 			'title'          => __( 'Content Options', 'csc-domain-mapping' ),
 			'priority'       => 100,
 			'panel'          => $toggle['panel'],
 		) );
 
 		// add setting for page comment toggle checkbox
-		$wp_manager->add_setting( 'page_comment_toggle', array(
+		$customizer_additions->add_setting( 'page_comment_toggle', array(
 			'default' => 1,
 		) );
 
 		// add control for page comment toggle checkbox
-		$wp_manager->add_control(
-		 new Toggle( $wp_manager,
+		$customizer_additions->add_control(
+		 new Toggle( $customizer_additions,
 			 'page_comment_toggle', array(
 			 'label'     => __( 'Show comments on pages?', 'csc-domain-mapping' ),
 			 'section'   => 'content_options_section',
@@ -318,12 +318,12 @@ class CSC_Theme_Customizer {
 			 )
 		 ) );
 
-		$wp_manager->add_setting( 'wds_force_image_https',
+		$customizer_additions->add_setting( 'wds_force_image_https',
 			array(
 			'default'        => false,
 			)
 		);
-		$wp_manager->add_control( new Toggle( $wp_manager, 'wds_force_image_https',
+		$customizer_additions->add_control( new Toggle( $customizer_additions, 'wds_force_image_https',
 			array(
 			'settings'   => 'wds_force_image_https',
 			'label'      => __( 'WDS Force Image https URL', 'csc-domain-mapping' ),
@@ -331,12 +331,12 @@ class CSC_Theme_Customizer {
 			'type'      => 'ios',
 			)
 		) );
-		$wp_manager->add_setting( 'fix_header_image',
+		$customizer_additions->add_setting( 'fix_header_image',
 			array(
 			'default'        => false,
 			)
 		);
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			'fix_header_image',
 			array(
 			'settings'   => 'fix_header_image',
@@ -344,12 +344,12 @@ class CSC_Theme_Customizer {
 			'section'    => 'domain_mapping_section',
 			'type'       => 'checkbox',
 		) );
-		$wp_manager->add_setting( 'fix_background_image',
+		$customizer_additions->add_setting( 'fix_background_image',
 			array(
 				'default'        => false,
 			)
 		);
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 
 			'fix_background_image',
 			array(
@@ -358,12 +358,12 @@ class CSC_Theme_Customizer {
 				'section'    => 'domain_mapping_section',
 				'type'       => 'checkbox',
 		) );
-		$wp_manager->add_setting( 'fix_meta_image',
+		$customizer_additions->add_setting( 'fix_meta_image',
 			array(
 				'default'        => false,
 			)
 		);
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 
 			'fix_meta_image_url',
 			array(
@@ -372,13 +372,13 @@ class CSC_Theme_Customizer {
 				'section'    => 'domain_mapping_section',
 				'type'       => 'checkbox',
 		) );
-		$wp_manager->add_setting( 'fix_upload_url',
+		$customizer_additions->add_setting( 'fix_upload_url',
 			array(
 				'default'        => false,
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 
 			'fix_upload_url',
 			array(
@@ -388,13 +388,13 @@ class CSC_Theme_Customizer {
 				'type'       => 'checkbox',
 		) );
 
-		$wp_manager->add_setting( 'fix_nav_item_url',
+		$customizer_additions->add_setting( 'fix_nav_item_url',
 			array(
 			'default'        => false,
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 
 			'fix_nav_item_url',
 			array(
@@ -404,7 +404,7 @@ class CSC_Theme_Customizer {
 			'type'       => 'checkbox',
 		) );
 
-		$wp_manager->add_section( 'section_id', array(
+		$customizer_additions->add_section( 'section_id', array(
 			'priority' => 20,
 			'capability' => 'edit_theme_options',
 			'theme_supports' => '',
@@ -413,13 +413,13 @@ class CSC_Theme_Customizer {
 			'panel' => $toggle['panel'],
 		) );
 
-		$wp_manager->add_setting( 'show_diagnostics',
+		$customizer_additions->add_setting( 'show_diagnostics',
 			array(
 			'default'    => false,
 			)
 		);
 
-		$wp_manager->add_control( 'show_diagnostics',
+		$customizer_additions->add_control( 'show_diagnostics',
 			array(
 				'settings'    => 'show_diagnostics',
 				'label'       => __( 'Domain Mapping Diagnostics' ),
@@ -430,7 +430,7 @@ class CSC_Theme_Customizer {
 		);
 
 		if ( true === get_theme_mod( 'show_diagnostics' ) ) {
-			$wp_manager->add_setting( 'diagnostic_type',
+			$customizer_additions->add_setting( 'diagnostic_type',
 				array(
 				'capability' => 'edit_theme_options',
 				'default'    => 'mapping',
@@ -439,7 +439,7 @@ class CSC_Theme_Customizer {
 				// // 'customizer_sanitize_radio',
 				// ),
 			) );
-			$wp_manager->add_control( 'diagnostic_type',
+			$customizer_additions->add_control( 'diagnostic_type',
 				array(
 				'type'        => 'radio',
 				'section'     => 'section_id',
@@ -458,7 +458,7 @@ class CSC_Theme_Customizer {
 	/**
 	 * A section to show how you use the default customizer controls in WordPress
 	 *
-	 * @param  Obj $wp_manager - WP Manager
+	 * @param  Obj $customizer_additions - WP Manager
 	 *
 	 * @return Void
 	 */

@@ -10,23 +10,23 @@ class Customizing_Complex_Section {
 	/**
 	 * [wp_customizer_manager description]
 	 *
-	 * @param  [type] $wp_manager [description]
+	 * @param  [type] $customizer_additions [description]
 	 * @return [type]             [description]
 	 */
-	public function wp_customizer_manager( $wp_manager ) {
-		$this->complex_section( $wp_manager );
+	public function wp_customizer_manager( $customizer_additions ) {
+		$this->complex_section( $customizer_additions );
 	}
 
 
 	/**
 	 * A section to show how you use the default customizer controls in WordPress
 	 *
-	 * @param Obj $wp_manager - WP Manager
+	 * @param Obj $customizer_additions - WP Manager
 	 *
 	 * @return Void
 	 */
-	private function complex_section( $wp_manager ) {
-		$wp_manager->add_section(
+	private function complex_section( $customizer_additions ) {
+		$customizer_additions->add_section(
 			'complex_customizer_section', array(
 				'title'          => 'Complex Controls',
 				'priority'       => 35,
@@ -38,15 +38,15 @@ class Customizing_Complex_Section {
 		/**
 		 * Color control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'color_setting', array(
 				'default'        => '#dd9933',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			new WP_Customize_Color_Control(
-				$wp_manager, 'color_setting', array(
+				$customizer_additions, 'color_setting', array(
 					'label'   => 'Color Setting',
 					'section' => 'complex_customizer_section',
 					'settings'   => 'color_setting',
@@ -58,15 +58,15 @@ class Customizing_Complex_Section {
 		/**
 		 * WP_Customize_Upload_Control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'upload_setting', array(
 				'default'        => '',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			new WP_Customize_Upload_Control(
-				$wp_manager, 'upload_setting', array(
+				$customizer_additions, 'upload_setting', array(
 					'label'   => 'Upload Setting',
 					'section' => 'complex_customizer_section',
 					'settings'   => 'upload_setting',
@@ -78,15 +78,15 @@ class Customizing_Complex_Section {
 		/**
 		 * WP_Customize_Image_Control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'image_setting', array(
 				'default'        => '',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			new WP_Customize_Image_Control(
-				$wp_manager, 'image_setting', array(
+				$customizer_additions, 'image_setting', array(
 					'label'   => 'Image Setting',
 					'section' => 'complex_customizer_section',
 					'settings'   => 'image_setting',
@@ -98,15 +98,15 @@ class Customizing_Complex_Section {
 		/**
 		 * WP_Customize_Background_Image_Control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'background_image_setting', array(
 				'default'        => '',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			new WP_Customize_Image_Control(
-				$wp_manager, 'background_image_setting', array(
+				$customizer_additions, 'background_image_setting', array(
 					'label'   => 'Background Image Setting',
 					'section' => 'complex_customizer_section',
 					'settings'   => 'background_image_setting',
@@ -118,15 +118,15 @@ class Customizing_Complex_Section {
 		/**
 		 * WP_Customize_Background_Image_Control
 		 */
-		$wp_manager->add_setting(
+		$customizer_additions->add_setting(
 			'background_image_setting', array(
 				'default'        => '',
 			)
 		);
 
-		$wp_manager->add_control(
+		$customizer_additions->add_control(
 			new WP_Customize_Background_Image_Control(
-				$wp_manager, 'background_image_setting', array(
+				$customizer_additions, 'background_image_setting', array(
 					'label'   => 'Background Image Setting',
 					'section' => 'complex_customizer_section',
 					'settings'   => 'background_image_setting',
