@@ -5,6 +5,7 @@ class Customizing_Comment_Form {
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'wp_customizer_manager' ) );
 		add_filter( 'comment_form_defaults', array( $this, 'adjust_comment_form_defaults' ), 20 );
+		// add_action( 'wp_head', array( $this, 'inline_css' ) );
 	}
 
 	/**
@@ -26,7 +27,9 @@ class Customizing_Comment_Form {
 	 * @return [type]             [description]
 	 */
 	private function comment_form( $customizer_additions ) {
-		require_once dirname( __FILE__ ) . '/controls/checkbox-toggle/toggle-control.php';
+		require_once dirname( __FILE__ ) . '/controls/checkbox/toggle-control.php';
+		include_once dirname( __FILE__ ) . '/controls/text/textarea-custom-control.php';
+
 		$customizer_additions->add_section(
 			'comment_form_section', array(
 				'title'          => 'Comment Form Controls',
@@ -67,7 +70,7 @@ class Customizing_Comment_Form {
 				'section'     => 'comment_form_section',
 				'type'        => 'text',
 				'label'       => 'Reply Title',
-				'description' => 'This is a description of this text setting in the Simple Customizer Controls section of the panel',
+				'description' => 'TODO = if above toggle = false, input fields below = disabled',
 				'priority' => 1,
 			)
 		);
@@ -92,21 +95,43 @@ class Customizing_Comment_Form {
 		);
 
 		/**
-		 * Textbox control
+		 * Adding a textarea control
 		 */
 		$customizer_additions->add_setting(
 			'comment_notes_before', array(
-				'default'        => 'Add a Comment Text',
+				'default'        => 'Comment Notes Before Text',
 			)
 		);
 
 		$customizer_additions->add_control(
-			'comment_notes_before', array(
+			new Textarea_Custom_Control(
+				$customizer_additions, 'comment_notes_before', array(
 				'section'  => 'comment_form_section',
 				'type'     => 'text',
-				'label'       => 'Comment Submit Button Text',
+				'label'       => 'Comment Notes Before Textarea',
 				'description' => 'An area where you can add a description of expected behavior regarding the Comment Form.',
 				'priority' => 1,
+				)
+			)
+		);
+
+		/**
+		 * Adding a textarea control
+		 */
+		$customizer_additions->add_setting(
+			'comment_notes_after', array(
+				'default'        => 'Comment Notes After Text',
+			)
+		);
+		$customizer_additions->add_control(
+			new Textarea_Custom_Control(
+				$customizer_additions, 'comment_notes_after', array(
+					'label'   => 'Comment Notes After Textarea',
+					'description'   => 'Comment Notes After Textarea Text Setting',
+					'section' => 'comment_form_section',
+					'settings'   => 'comment_notes_after',
+					'priority' => 1,
+				)
 			)
 		);
 
@@ -115,7 +140,7 @@ class Customizing_Comment_Form {
 		 */
 		$customizer_additions->add_setting(
 			'label_submit', array(
-				'default'        => 'Add a Comment Text',
+				'default'        => 'Add a Comment Label',
 			)
 		);
 
@@ -139,8 +164,11 @@ class Customizing_Comment_Form {
 	function adjust_comment_form_defaults( $defaults ) {
 		if ( true === get_theme_mod( 'alter_comments' ) ) {
 			$defaults['title_reply'] = ( get_theme_mod( 'leave_reply' ) ? get_theme_mod( 'leave_reply' ) : '<span style="color:salmon;">Add a Comment below</span>' );
-			$defaults['label_submit'] = ( get_theme_mod( 'label_submit' ) ? get_theme_mod( 'label_submit' ) : '<span style="color:salmon;">Click to Add</span>' );
-			$defaults['comment_notes_before'] = '<p class="comment-notes">' . ( get_theme_mod( 'comment_notes_before' ) ? get_theme_mod( 'comment_notes_before' ) : '<span style="color:salmon;">The WordPress Comment Form has an area where you can add a description, some instructions, or an explanation of the expected intention.</span>' ) . '</p>';
+			$defaults['label_submit'] = ( get_theme_mod( 'label_submit' ) ? get_theme_mod( 'label_submit' ) : 'Click to Add' );
+			$defaults['submit_button'] = ( get_theme_mod( 'label_submit' ) ? '<input name="%1$s" type="submit" id="%2$s" class="%3$s" value="%4$s" />' : '<input name="%1$s" type="submit" id="%2$s" class="%3$s" style="background-color:salmon;" value="%4$s" />' );
+			$defaults['comment_notes_before'] = '<p class="comment-notes">' . ( get_theme_mod( 'comment_notes_before' ) ? get_theme_mod( 'comment_notes_before' ) : '<span style="color:salmon;">comment_notes_before = (string) HTML element for a message displayed before the comment fields if the user is not logged in. Default = "Your email address will not be published."</span>' ) . '</p>';
+			$defaults['comment_notes_after'] = '<p class="comment-notes">' . ( get_theme_mod( 'comment_notes_after' ) ? get_theme_mod( 'comment_notes_after' ) : '<span style="color:salmon;">comment_notes_after = (string) HTML element for a message displayed after the textarea field.
+</span>' ) . '</p>';
 			$defaults['comment_field'] = __( '<p class="comment-form-comment"><label for="comment"> * ' . ( get_theme_mod( 'comment_form_title' ) ? get_theme_mod( 'comment_form_title' ) : '<span style="color:salmon;">Input Comment here</span>' ) . '</label><textarea id="comment" name="comment" cols="45" rows="7" aria-required="true"></textarea></p>' );
 
 			return $defaults;
@@ -164,5 +192,16 @@ class Customizing_Comment_Form {
 		| <a href="<?php bloginfo( 'url' ); ?>">
 		<?php bloginfo( 'name' ); ?></a>
 		| <?php bloginfo( 'description' );
+	}
+
+	function inline_css() {
+	?>
+	<style type="text/css">
+		#submit.salmon {
+			background-color: rgb( 250, 128, 114 );
+		}
+	</style>
+
+	<?php
 	}
 }

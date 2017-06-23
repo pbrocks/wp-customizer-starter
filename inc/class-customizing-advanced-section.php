@@ -48,7 +48,7 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a Checkbox Toggle
 		 */
-		require_once dirname( __FILE__ ) . '/controls/checkbox-toggle/toggle-control.php';
+		require_once dirname( __FILE__ ) . '/controls/checkbox/toggle-control.php';
 
 		$customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
 			'show_slider1', array(

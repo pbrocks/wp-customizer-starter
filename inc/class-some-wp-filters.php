@@ -29,7 +29,7 @@ class Some_WP_Filters {
 		/**
 		 * Include custom Toggle Control
 		 */
-		require_once dirname( __FILE__ ) . '/controls/checkbox-toggle/toggle-control.php';
+		require_once dirname( __FILE__ ) . '/controls/checkbox/toggle-control.php';
 		$customizer_additions->add_section(
 			'wp_filters_section', array(
 				'title'          => 'Control Filters',

@@ -4,6 +4,7 @@
  *
  * @link  http://codex.wordpress.org/Theme_Customization_API
  * @since MyTheme 1.0
+ * disabled( $disabled, $current = true, $echo = true )
  */
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
