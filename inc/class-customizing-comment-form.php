@@ -90,6 +90,26 @@ class Customizing_Comment_Form {
 				'priority' => 1,
 			)
 		);
+
+		/**
+		 * Textbox control
+		 */
+		$customizer_additions->add_setting(
+			'comment_notes_before', array(
+				'default'        => 'Add a Comment Text',
+			)
+		);
+
+		$customizer_additions->add_control(
+			'comment_notes_before', array(
+				'section'  => 'comment_form_section',
+				'type'     => 'text',
+				'label'       => 'Comment Submit Button Text',
+				'description' => 'An area where you can add a description of expected behavior regarding the Comment Form.',
+				'priority' => 1,
+			)
+		);
+
 		/**
 		 * Textbox control
 		 */
@@ -118,10 +138,10 @@ class Customizing_Comment_Form {
 	 */
 	function adjust_comment_form_defaults( $defaults ) {
 		if ( true === get_theme_mod( 'alter_comments' ) ) {
-			$defaults['title_reply'] = ( get_theme_mod( 'leave_reply' ) ? get_theme_mod( 'leave_reply' ) : 'Add a Comment below' );
-			$defaults['label_submit'] = ( get_theme_mod( 'label_submit' ) ? get_theme_mod( 'label_submit' ) : 'Click to Add' );
-			// $defaults['name_submit'] = __( 'Name Submit' );
-			$defaults['comment_field'] = __( '<p class="comment-form-comment"><label for="comment"> * ' . ( get_theme_mod( 'comment_form_title' ) ? get_theme_mod( 'comment_form_title' ) : 'Input Comment here' ) . '</label><textarea id="comment" name="comment" cols="45" rows="7" aria-required="true"></textarea></p>' );
+			$defaults['title_reply'] = ( get_theme_mod( 'leave_reply' ) ? get_theme_mod( 'leave_reply' ) : '<span style="color:salmon;">Add a Comment below</span>' );
+			$defaults['label_submit'] = ( get_theme_mod( 'label_submit' ) ? get_theme_mod( 'label_submit' ) : '<span style="color:salmon;">Click to Add</span>' );
+			$defaults['comment_notes_before'] = '<p class="comment-notes">' . ( get_theme_mod( 'comment_notes_before' ) ? get_theme_mod( 'comment_notes_before' ) : '<span style="color:salmon;">The WordPress Comment Form has an area where you can add a description, some instructions, or an explanation of the expected intention.</span>' ) . '</p>';
+			$defaults['comment_field'] = __( '<p class="comment-form-comment"><label for="comment"> * ' . ( get_theme_mod( 'comment_form_title' ) ? get_theme_mod( 'comment_form_title' ) : '<span style="color:salmon;">Input Comment here</span>' ) . '</label><textarea id="comment" name="comment" cols="45" rows="7" aria-required="true"></textarea></p>' );
 
 			return $defaults;
 		}
