@@ -16,6 +16,85 @@ class Customizing_Comment_Form {
 	 */
 	public function wp_customizer_manager( $customizer_additions ) {
 		$this->comment_form( $customizer_additions );
+		$this->comment_form_second( $customizer_additions );
+	}
+
+	/**
+	 * The comment_form function adds a new section
+	 * to the Customizer to display the settings and
+	 * controls that we build.
+	 *
+	 * @param  [type] $customizer_additions [description]
+	 * @return [type]             [description]
+	 */
+	private function comment_form_second( $customizer_additions ) {
+		require_once dirname( __FILE__ ) . '/controls/checkbox/toggle-control.php';
+		include_once dirname( __FILE__ ) . '/controls/text/textarea-custom-control.php';
+
+		$customizer_additions->add_section(
+			'comment_form_section_2', array(
+				'title'          => 'Comment Form Controls 2',
+				'priority'       => 36,
+				'panel'       => 'comment_form_panel',
+				)
+		);
+
+		$customizer_additions->add_setting( 'alter_comments_2',
+			array(
+				'default'        => '0',
+				'transport'      => 'postMessage',
+		) );
+
+		/**
+		 * Adding a Checkbox Toggle
+		 */
+		$customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
+			'alter_comments_2', array(
+				'label'       => 'Alter Comment Form Fields 2',
+				'description' => 'Placeholder for further customization of the Comment Form. Nothing on this panel will affect the site other than saving settings.',
+				'section'     => 'comment_form_section_2',
+				'type'        => 'ios',
+				'priority'    => 1,
+			)
+		) );
+
+		/**
+		 * Textbox control
+		 */
+		$customizer_additions->add_setting(
+			'leave_reply_2', array(
+				'default'        => 'Reply Title 2',
+			)
+		);
+
+		$customizer_additions->add_control(
+			'leave_reply_2', array(
+				'section'     => 'comment_form_section_2',
+				'type'        => 'text',
+				'label'       => 'Reply Title',
+				'description' => 'TODO = if above toggle = false, input fields below = disabled',
+				'priority' => 1,
+			)
+		);
+		/**
+		 * Textbox control
+		 */
+		$customizer_additions->add_setting(
+			'comment_form_title_2', array(
+				'default'        => 'Comment Form Title 2',
+				'transport'      => 'refresh',
+			)
+		);
+
+		$customizer_additions->add_control(
+			'comment_form_title_2', array(
+				'section'     => 'comment_form_section_2',
+				'type'        => 'text',
+				'label'       => 'Comment Form Title',
+				'description' => 'This is a description of this text setting in the Simple Customizer Controls section of the panel',
+				'priority' => 1,
+			)
+		);
 	}
 
 	/**
@@ -30,10 +109,18 @@ class Customizing_Comment_Form {
 		require_once dirname( __FILE__ ) . '/controls/checkbox/toggle-control.php';
 		include_once dirname( __FILE__ ) . '/controls/text/textarea-custom-control.php';
 
+		$customizer_additions->add_panel(
+			'comment_form_panel', array(
+				'title'          => 'Alter Comment Form',
+				'priority'       => 36,
+				)
+		);
+
 		$customizer_additions->add_section(
 			'comment_form_section', array(
 				'title'          => 'Comment Form Controls',
 				'priority'       => 36,
+				'panel'       => 'comment_form_panel',
 				)
 		);
 
