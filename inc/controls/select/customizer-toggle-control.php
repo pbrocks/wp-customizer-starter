@@ -1,28 +1,27 @@
 <?php
 
-defined('ABSPATH') || die('File cannot be accessed directly');
+defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
-if ( ! class_exists('WP_Customize_Control') ) {
-    return null;
+if ( ! class_exists( 'WP_Customize_Control' ) ) {
+	return null;
 }
 
 /**
  * Class to create a slick toggle control
  */
 class Customizer_Toggle_Control extends WP_Customize_Control {
-    public $type = 'ios';
+	public $type = 'ios';
 
-    /**
-     * Enqueue scripts/styles.
-     *
-     * @since 3.4.0
-     */
-    public function enqueue() 
-    {
-        wp_enqueue_script('customizer-toggle-control', plugins_url('/../functions/wordpress-customizer/js/customizer-toggle-control.js', __FILE__), array( 'jquery' ), rand(), true);
-        wp_enqueue_style('pure-css-toggle-buttons', plugins_url('/../functions/wordpress-customizer/pure-css-toggle-buttons/pure-css-togle-buttons.css', __FILE__), array(), rand());
+	/**
+	 * Enqueue scripts/styles.
+	 *
+	 * @since 3.4.0
+	 */
+	public function enqueue() {
+		wp_enqueue_script( 'customizer-toggle-control', plugins_url( '/../functions/wordpress-customizer/js/customizer-toggle-control.js', __FILE__ ), array( 'jquery' ), rand(), true );
+		wp_enqueue_style( 'pure-css-toggle-buttons', plugins_url( '/../functions/wordpress-customizer/pure-css-toggle-buttons/pure-css-togle-buttons.css', __FILE__ ), array(), rand() );
 
-        $css = '
+		$css = '
 			.disabled-control-title {
 				color: #a0a5aa;
 			}
@@ -48,29 +47,28 @@ class Customizer_Toggle_Control extends WP_Customize_Control {
 			}
 
 		';
-        wp_add_inline_style('pure-css-toggle-buttons', $css);
-    }
+		wp_add_inline_style( 'pure-css-toggle-buttons', $css );
+	}
 
-    /**
-     * Render the control's content.
-     *
-     * @author  soderlind
-     * @version 1.2.0
-     */
-    public function render_content() 
-    {
-        ?>
-        <label>
-         <div style="display:flex;flex-direction: row;justify-content: flex-start;">
-       <span class="customize-control-title" style="flex: 2 0 0; vertical-align: middle;"><?php echo esc_html($this->label); ?></span>
-       <input id="cb<?php echo $this->instance_number ?>" type="checkbox" class="tgl tgl-<?php echo $this->type?>" value="<?php echo esc_attr($this->value()); ?>" <?php $this->link();
-                checked($this->value()); ?> />
-          <label for="cb<?php echo $this->instance_number ?>" class="tgl-btn"></label>
-         </div>
-            <?php if (! empty($this->description) ) : ?>
-            <span class="description customize-control-description"><?php echo $this->description; ?></span>
-            <?php endif; ?>
-        </label>
-        <?php
-    }
+	/**
+	 * Render the control's content.
+	 *
+	 * @author  soderlind
+	 * @version 1.2.0
+	 */
+	public function render_content() {
+		?>
+		<label>
+		 <div style="display:flex;flex-direction: row;justify-content: flex-start;">
+	   <span class="customize-control-title" style="flex: 2 0 0; vertical-align: middle;"><?php echo esc_html( $this->label ); ?></span>
+	   <input id="cb<?php echo $this->instance_number ?>" type="checkbox" class="tgl tgl-<?php echo $this->type?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link();
+				checked( $this->value() ); ?> />
+		  <label for="cb<?php echo $this->instance_number ?>" class="tgl-btn"></label>
+		 </div>
+			<?php if ( ! empty( $this->description ) ) : ?>
+			<span class="description customize-control-description"><?php echo $this->description; ?></span>
+			<?php endif; ?>
+		</label>
+		<?php
+	}
 }

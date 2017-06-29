@@ -63,7 +63,7 @@ class Customizer_Toggle_Control extends WP_Customize_Control {
 	public function render_content() {
 		?>
 		<label>
-	        <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 			<div style="display:flex;flex-direction: row;justify-content: flex-start;">
 			<?php if ( ! empty( $this->description ) ) : ?>
 				<span class="customize-control-description" style="flex: 2 0 0; vertical-align: middle;"><?php echo esc_html( $this->description ); ?></span>
@@ -72,7 +72,7 @@ class Customizer_Toggle_Control extends WP_Customize_Control {
 				checked( $this->value() ); ?> />
 				<label for="cb<?php echo $this->instance_number ?>" class="tgl-btn"></label>
 			</div>
-			<?php if (  empty( $this->description ) ) : ?>
+			<?php if ( empty( $this->description ) ) : ?>
 			<span class="description customize-control-description"><?php echo $this->description; ?></span>
 			<?php endif; ?>
 		</label>

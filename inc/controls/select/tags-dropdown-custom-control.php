@@ -1,49 +1,46 @@
 <?php
 
-defined('ABSPATH') || die('File cannot be accessed directly');
+defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
-if (! class_exists('WP_Customize_Control') ) {
-    return null;
+if ( ! class_exists( 'WP_Customize_Control' ) ) {
+	return null;
 }
 /**
  * Class to create a custom tags control
  */
-class Tags_Dropdown_Custom_Control extends WP_Customize_Control
-{
+class Tags_Dropdown_Custom_Control extends WP_Customize_Control {
 
-    private $tags = false;
+	private $tags = false;
 
-    public function __construct( $manager, $id, $args = array(), $options = array() ) 
-    {
-        $this->tags = get_tags($options);
+	public function __construct( $manager, $id, $args = array(), $options = array() ) {
+		$this->tags = get_tags( $options );
 
-        parent::__construct($manager, $id, $args);
-    }
+		parent::__construct( $manager, $id, $args );
+	}
 
-    /**
-     * Render the content on the theme customizer page
-     */
-    public function render_content() 
-    {
-        if (empty($this->tags) ) {
-            return false;
-        }
-        ?>
-         <label>
-       <span class="customize-tags-dropdown customize-control-title"><?php echo esc_html($this->label); ?></span>
-       <select name="<?php echo esc_html($this->id); ?>" id="<?php echo esc_html($this->id); ?>">
-        <?php
-        foreach ( $this->tags as $tag ) {
-            printf(
-                '<option value="%s" %s>%s</option>',
-                $tag->term_id,
-                selected($this->value(), $tag->term_id, false),
-                $tag->name
-            );
-        }
-        ?>
-       </select>
-         </label>
-        <?php
-    }
+	/**
+	 * Render content in customizer panel
+	 */
+	public function render_content() {
+		if ( empty( $this->tags ) ) {
+			return false;
+		}
+		?>
+		 <label>
+	   <span class="customize-tags-dropdown customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+	   <select name="<?php echo esc_html( $this->id ); ?>" id="<?php echo esc_html( $this->id ); ?>">
+		<?php
+		foreach ( $this->tags as $tag ) {
+			printf(
+				'<option value="%s" %s>%s</option>',
+				$tag->term_id,
+				selected( $this->value(), $tag->term_id, false ),
+				$tag->name
+			);
+		}
+		?>
+	   </select>
+		 </label>
+		<?php
+	}
 }

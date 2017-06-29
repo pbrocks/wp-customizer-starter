@@ -3,69 +3,66 @@
  * Customize for taxonomy with dropdown, extend the WP customizer
  */
 
-if (! class_exists('WP_Customize_Control') ) {
-    return null;
+if ( ! class_exists( 'WP_Customize_Control' ) ) {
+	return null;
 }
 
-class Taxonomy_Dropdown_Custom_Control extends WP_Customize_Control
-{
+class Taxonomy_Dropdown_Custom_Control extends WP_Customize_Control {
 
-    private $options = false;
 
-    public function __construct( $manager, $id, $args = array(), $options = array() ) 
-    {
-        $this->options = $options;
+	private $options = false;
 
-        parent::__construct($manager, $id, $args);
-    }
+	public function __construct( $manager, $id, $args = array(), $options = array() ) {
+		$this->options = $options;
 
-    /**
-     * Render the control's content.
-     *
-     * Allows the content to be overriden without having to rewrite the wrapper.
-     *
-     * @since  11/14/2012
-     * @return void
-     */
-    public function render_content() 
-    {
-        // call wp_dropdown_categories to get data and add to select field
-        add_action('wp_dropdown_categories', array( $this, 'wp_dropdown_categories' ));
+		parent::__construct( $manager, $id, $args );
+	}
 
-        // Set defaults
-        $this->defaults = array(
-         'show_option_none' => __('None'),
-         'orderby'          => 'name',
-         'hide_empty'       => 0,
-         'id'               => $this->id,
-         'selected'         => $this->value(),
-        );
+	/**
+	 * Render the control's content.
+	 *
+	 * Allows the content to be overriden without having to rewrite the wrapper.
+	 *
+	 * @since  11/14/2012
+	 * @return void
+	 */
+	public function render_content() {
+		// call wp_dropdown_categories to get data and add to select field
+		add_action( 'wp_dropdown_categories', array( $this, 'wp_dropdown_categories' ) );
 
-        // parse defaults and user data
-        $categories = wp_parse_args(
-            $this->options,
-            $this->defaults
-        );
+		// Set defaults
+		$this->defaults = array(
+		 'show_option_none' => __( 'None' ),
+		 'orderby'          => 'name',
+		 'hide_empty'       => 0,
+		 'id'               => $this->id,
+		 'selected'         => $this->value(),
+		);
 
-        ?>
-        <label>
-         <span class="customize-control-title customize-control-title"><?php echo esc_html($this->label); ?></span>
-        <?php wp_dropdown_categories($categories); ?>
-        </label>
-        <?php
-    }
+		// parse defaults and user data
+		$categories = wp_parse_args(
+			$this->options,
+			$this->defaults
+		);
 
-    /**
-     * Replace WP default dropdown
-     *
-     * @since  11/14/2012
-     * @return String $output
-     */
-    public function wp_dropdown_categories( $output ) 
-    {
-        $output = str_replace('<select', '<select ' . $this->get_link(), $output);
+		?>
+		<label>
+		 <span class="customize-control-title customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+		<?php wp_dropdown_categories( $categories ); ?>
+		</label>
+		<?php
+	}
 
-        return $output;
-    }
+	/**
+	 * Replace WP default dropdown
+	 *
+	 * @since  11/14/2012
+	 * @return String $output
+	 */
+	public function wp_dropdown_categories( $output ) {
+		$output = str_replace( '<select', '<select ' . $this->get_link(), $output );
+
+		return $output;
+	}
 }
 ?>

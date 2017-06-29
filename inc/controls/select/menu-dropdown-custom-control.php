@@ -1,6 +1,6 @@
 <?php
 
-defined('ABSPATH') || die('File cannot be accessed directly');
+defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
 if ( ! class_exists( 'WP_Customize_Control' ) ) {
 	return null;
@@ -20,17 +20,17 @@ class Menu_Dropdown_Custom_Control extends WP_Customize_Control {
 	}
 
 	/**
-	 * Render the content on the theme customizer page
+	 * Render content in customizer panel
 	 */
 	public function render_content() {
-		if (! empty($this->menus) ) {
+		if ( ! empty( $this->menus ) ) {
 			?>
 			<label>
-				<span class="customize-menu-dropdown customize-control-title"><?php echo esc_html($this->label); ?></span>
-				<select name="<?php echo esc_html($this->id); ?>" id="<?php echo esc_html($this->id); ?>">
+				<span class="customize-menu-dropdown customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+				<select name="<?php echo esc_html( $this->id ); ?>" id="<?php echo esc_html( $this->id ); ?>">
 					<?php
 					foreach ( $this->menus as $menu ) {
-						printf('<option value="%s" %s>%s</option>', $menu->term_id, selected($this->value(), $menu->term_id, false), $menu->name);
+						printf( '<option value="%s" %s>%s</option>', $menu->term_id, selected( $this->value(), $menu->term_id, false ), $menu->name );
 					}
 					?>
 				</select>

@@ -118,7 +118,7 @@ class Customizing_Comment_Form {
 
 		$customizer_additions->add_section(
 			'comment_form_section', array(
-				'title'          => 'Comment Form Controls',
+				'title'          => 'Comment Form Basic Labels',
 				'priority'       => 36,
 				'panel'       => 'comment_form_panel',
 				)
@@ -186,7 +186,7 @@ class Customizing_Comment_Form {
 		 */
 		$customizer_additions->add_setting(
 			'comment_notes_before', array(
-				'default'        => 'Comment Notes Before Text',
+				'default'        => 'This text can be changed to anything you need to communicate like a short user agreement. "By using these comments you are agreeing to abide by our use terms."',
 			)
 		);
 
