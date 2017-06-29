@@ -39,27 +39,6 @@ class Customizing_Advanced_Section {
 			)
 		);
 
-		$customizer_additions->add_setting( 'show_slider1', array(
-			'default'        => '1',
-		) );
-
-		// Checkbox control
-		// require_once dirname( __FILE__ ) . '/layout/layout-picker-custom-control.php';
-		/**
-		 * Adding a Checkbox Toggle
-		 */
-		require_once dirname( __FILE__ ) . '/controls/checkbox/toggle-control.php';
-
-		$customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
-			'show_slider1', array(
-				'label'   => 'Show Slider',
-				'description'   => 'description = Show Slider advance d_control s_sec tion advan ced_controls_section',
-				'section' => 'advanced_controls_section',
-				'type'    => 'ios',
-				'priority' => 1,
-			)
-		) );
-
 		/**
 		 * Adding Date Picker
 		 */

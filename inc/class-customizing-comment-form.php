@@ -16,7 +16,7 @@ class Customizing_Comment_Form {
 	 */
 	public function wp_customizer_manager( $customizer_additions ) {
 		$this->comment_form( $customizer_additions );
-		$this->comment_form_second( $customizer_additions );
+		// $this->comment_form_second( $customizer_additions );
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Customizing_Comment_Form {
 
 		$customizer_additions->add_setting( 'alter_comments_2',
 			array(
-				'default'        => '0',
+				'default'        => false,
 				'transport'      => 'postMessage',
 		) );
 
@@ -126,7 +126,7 @@ class Customizing_Comment_Form {
 
 		$customizer_additions->add_setting( 'alter_comments',
 			array(
-				'default'        => '0',
+				'default'        => 'false',
 				'transport'      => 'postMessage',
 		) );
 
