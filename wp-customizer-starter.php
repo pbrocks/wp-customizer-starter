@@ -17,7 +17,6 @@
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
-require( 'inc/class-admin-menus.php' );
 require( 'inc/class-wp-customizer-starter.php' );
 require( 'inc/class-customizing-simple-section.php' );
 require( 'inc/class-customizing-comment-form.php' );
