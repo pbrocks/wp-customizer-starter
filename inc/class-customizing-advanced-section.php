@@ -39,10 +39,34 @@ class Customizing_Advanced_Section {
 			)
 		);
 
+		$customizer_additions->add_setting( 'show_something', array(
+			'default'        => 'false',
+		) );
+
+		/**
+		 * Adding a Checkbox Toggle
+		 */
+		if ( ! class_exists( 'Customizer_Toggle_Control' ) ) {
+			require_once dirname( __FILE__ ) . '/controls/checkbox/toggle-control.php';
+		}
+
+		$customizer_additions->add_control( new Customizer_Toggle_Control( $customizer_additions,
+			'show_something', array(
+				'label'   => 'Show Something',
+				'description'   => 'Show Something => slide to turn on setting. Toggle is equivalent to a checkbox.',
+				'section' => 'advanced_controls_section',
+				'type'    => 'ios',
+				'priority' => 1,
+			)
+		) );
+
 		/**
 		 * Adding Date Picker
 		 */
-		include_once dirname( __FILE__ ) . '/controls/date/date-picker-custom-control.php';
+		if ( ! class_exists( 'Date_Picker_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/date/date-picker-custom-control.php';
+		}
+
 		$customizer_additions->add_setting(
 			'date_picker_setting', array(
 				'default'        => '',
@@ -64,7 +88,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a Layout Picker
 		 */
-		include_once dirname( __FILE__ ) . '/controls/layout/layout-picker-custom-control.php';
+		if ( ! class_exists( 'Layout_Picker_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/layout/layout-picker-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'layout_picker_setting', array(
 				'default'        => '',
@@ -84,7 +110,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a category dropdown control.
 		 */
-		include_once dirname( __FILE__ ) . '/controls/select/category-dropdown-custom-control.php';
+		if ( ! class_exists( 'Category_Dropdown_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/select/category-dropdown-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'category_dropdown_setting', array(
 				'default'        => '',
@@ -104,7 +132,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a menu dropdown control
 		 */
-		include_once dirname( __FILE__ ) . '/controls/select/menu-dropdown-custom-control.php';
+		if ( ! class_exists( 'Menu_Dropdown_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/select/menu-dropdown-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'menu_dropdown_setting', array(
 				'default'        => '',
@@ -124,7 +154,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a post dropdown control
 		 */
-		include_once dirname( __FILE__ ) . '/controls/select/post-dropdown-custom-control.php';
+		if ( ! class_exists( 'Post_Dropdown_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/select/post-dropdown-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'post_dropdown_setting', array(
 				'default'        => '',
@@ -144,7 +176,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a post type dropdown control
 		 */
-		include_once dirname( __FILE__ ) . '/controls/select/post-type-dropdown-custom-control.php';
+		if ( ! class_exists( 'Post_Type_Dropdown_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/select/post-type-dropdown-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'post_type_dropdown_setting', array(
 				'default'        => '',
@@ -164,7 +198,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a tags dropdown control
 		 */
-		include_once dirname( __FILE__ ) . '/controls/select/tags-dropdown-custom-control.php';
+		if ( ! class_exists( 'Tags_Dropdown_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/select/tags-dropdown-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'tags_dropdown_setting', array(
 				'default'        => '',
@@ -184,7 +220,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a taxonomy dropdown control
 		 */
-		include_once dirname( __FILE__ ) . '/controls/select/taxonomy-dropdown-custom-control.php';
+		if ( ! class_exists( 'Taxonomy_Dropdown_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/select/taxonomy-dropdown-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'taxonomy_dropdown_setting', array(
 				'default'        => '',
@@ -204,7 +242,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a user dropdown control
 		 */
-		include_once dirname( __FILE__ ) . '/controls/select/user-dropdown-custom-control.php';
+		if ( ! class_exists( 'User_Dropdown_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/select/user-dropdown-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'user_dropdown_setting', array(
 				'default'        => '',
@@ -224,7 +264,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a textarea control
 		 */
-		include_once dirname( __FILE__ ) . '/controls/text/textarea-custom-control.php';
+		if ( ! class_exists( 'Textarea_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/text/textarea-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'textarea_text_setting', array(
 				'default'        => '',
@@ -244,7 +286,9 @@ class Customizing_Advanced_Section {
 		/**
 		 * Adding a text editor control
 		 */
-		include_once dirname( __FILE__ ) . '/controls/text/text-editor-custom-control.php';
+		if ( ! class_exists( 'Text_Editor_Custom_Control' ) ) {
+			include_once dirname( __FILE__ ) . '/controls/text/text-editor-custom-control.php';
+		}
 		$customizer_additions->add_setting(
 			'text_editor_setting', array(
 				'default'        => '',
@@ -261,19 +305,6 @@ class Customizing_Advanced_Section {
 			)
 		);
 
-		/**
-		 *  Adding a Google Font control
-		 */
-		// require_once dirname( __FILE__ ) . '/controls/select/google-font-dropdown-custom-control.php';
-		// $customizer_additions->add_setting( 'google_font_setting', array(
-		// 'default'        => '',
-		// ) );
-		// $customizer_additions->add_control( new Google_Font_Dropdown_Custom_Control( $customizer_additions, 'google_font_setting', array(
-		// 'label'   => 'Google Font Setting',
-		// 'section' => 'advanced_controls_section',
-		// 'settings'   => 'google_font_setting',
-		// 'priority' => 12
-		// ) ) );
 	}
 
 }
