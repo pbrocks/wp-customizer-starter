@@ -1,4 +1,7 @@
 <?php
+
+defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
+
 new Customizing_Advanced_Section();
 
 class Customizing_Advanced_Section {

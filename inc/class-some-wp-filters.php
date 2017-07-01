@@ -1,4 +1,7 @@
 <?php
+
+defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
+
 new Some_WP_Filters();
 
 class Some_WP_Filters {

@@ -17,9 +17,21 @@
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
+require( 'inc/class-customizer-starter.php' );
+require( 'inc/class-customizer-starter-api.php' );
+require( 'inc/class-customizer-starter-settings.php' );
 require( 'inc/class-wp-customizer-starter.php' );
 require( 'inc/class-customizing-simple-section.php' );
 require( 'inc/class-customizing-comment-form.php' );
 require( 'inc/class-customizing-complex-section.php' );
 require( 'inc/class-customizing-advanced-section.php' );
 require( 'inc/class-some-wp-filters.php' );
+
+add_action( 'init', function() {
+	$assets_url = plugin_dir_url( __FILE__ );
+	// Setup menu
+	if ( is_admin() ) {
+		new Customizer_Starter( $assets_url );
+	}
+	// Setup REST API
+});

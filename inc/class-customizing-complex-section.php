@@ -1,9 +1,12 @@
 <?php
+
+defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
+
 new Customizing_Complex_Section();
 
 class Customizing_Complex_Section {
 	public function __construct() {
-		add_action('customize_register', array( $this, 'wp_customizer_manager' ));
+		add_action( 'customize_register', array( $this, 'wp_customizer_manager' ) );
 	}
 
 
@@ -30,7 +33,7 @@ class Customizing_Complex_Section {
 			'complex_customizer_section', array(
 				'title'          => 'Complex Controls',
 				'priority'       => 35,
-				'panel'          =>  'plustomizer_panel',
+				'panel'          => 'plustomizer_panel',
 				'description' => 'This is a description of this text setting in the Complex Customizer Controls section of the Plustomizer panel',
 			)
 		);

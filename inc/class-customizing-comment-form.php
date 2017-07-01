@@ -1,4 +1,7 @@
 <?php
+
+defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
+
 new Customizing_Comment_Form();
 
 class Customizing_Comment_Form {
